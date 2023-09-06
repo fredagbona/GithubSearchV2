@@ -9,10 +9,14 @@
 
         </div>
         <div class="col">
-          <input v-model="username" class="form-control " placeholder="Search for a user">
+          <input v-model="username" class="form-control" @keyup.enter="getUsers" placeholder="Search for a user">
         </div>
         <div class="col">
-          <button @click="getUsers" class="btn btn-success "><i class="bi bi-search"></i></button>
+          <button v-if="loading === false" @click="getUsers" class="btn btn-success "><i class="bi bi-search"></i></button>
+          <button v-else class="btn btn-secondary"  disabled>
+            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            <span role="status">Loading...</span>
+          </button>
         </div>
       </div>
     </div>
@@ -113,33 +117,42 @@
           users: null,
           username: '',
           modalInfo: '',
-          userError: false
+          userError: false,
+          loading: false
         }
       },
       methods: {
         getUsers() {
-          const searched = this.username;
-          if(searched === '') {
-            this.onneUser = '';
-            getAllUsers()
-                .then((response) => {
-                  this.users = response
-                })
-                .catch((error) => {
-                console.log(error)
-                })
-          } else  {
-            this.users = '';
-            getUser(searched)
-                .then((response) => {
-                  console.log(response)
-                  this.onneUser = response
-                })
-                .catch((error) => {
-                  console.log(error)
-                  this.userError = true
-                })
-          }
+          this.loading = true
+          setTimeout(() => {
+            const searched = this.username;
+            if(searched === '') {
+              this.onneUser = '';
+              getAllUsers()
+                  .then((response) => {
+                    this.users = response
+                  })
+                  .catch((error) => {
+                    console.log(error)
+                  })
+            } else  {
+              this.users = '';
+              getUser(searched)
+                  .then((response) => {
+                    console.log(response)
+                    this.userError = false
+                    this.onneUser = response
+                  })
+                  .catch((error) => {
+                    console.log(error)
+                    this.onneUser = ''
+                    this.userError = true
+                  })
+            }
+
+            this.loading = false
+          }, 5000)
+
 
         },
 
