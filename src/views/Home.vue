@@ -5,12 +5,13 @@
   </button>
     <div class="container-fluid mt-5">
       <div class="row">
-        <div class="col-3">
+        <div class="col-md-3">
+
         </div>
-        <div class="col">
+        <div class="col-10 col-md-6">
           <input v-model="username" class="form-control"  @keyup.enter="getUsers" placeholder="Search for a user">
         </div>
-        <div class="col">
+        <div class="col-2 col-md-2">
           <button v-if="loading === false" @click="getUsers" class="btn btn-success "><i class="bi bi-search"></i></button>
           <button v-else class="btn btn-secondary"  disabled>
             <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
