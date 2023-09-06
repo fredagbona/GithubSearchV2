@@ -3,13 +3,12 @@
   <button class="btn btn-primary mt-5 mx-auto d-block" data-bs-toggle="modal" data-bs-target="#howitworks">
     How it works
   </button>
-    <div class="container mt-4 mb-4">
+    <div class="container-fluid mt-5">
       <div class="row">
         <div class="col-3">
-
         </div>
         <div class="col">
-          <input v-model="username" class="form-control" @keyup.enter="getUsers" placeholder="Search for a user">
+          <input v-model="username" class="form-control"  @keyup.enter="getUsers" placeholder="Search for a user">
         </div>
         <div class="col">
           <button v-if="loading === false" @click="getUsers" class="btn btn-success "><i class="bi bi-search"></i></button>
