@@ -29,7 +29,7 @@
             <img :src="user.avatar_url" class="rounded-circle mx-auto d-block" width="150" alt="User Avatar">
             <h5 class="card-title text-center mt-3">{{ user.login }}</h5>
             <p  class="card-text text-center"><a :href="user.html_url" target="_blank">{{ user.html_url }}</a> </p>
-            <button class="btn btn-success mx-auto d-block" data-bs-toggle="modal" data-bs-target="#userInfos" @click="openModal(user.login)" >
+            <button class="btn btn-warning mx-auto d-block" data-bs-toggle="modal" data-bs-target="#userInfos" @click="openModal(user.login)" >
               View More infos
             </button>
           </div>
