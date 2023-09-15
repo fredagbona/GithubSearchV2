@@ -1,6 +1,6 @@
 <template>
 
-  <button class="btn btn-primary mt-5 mx-auto d-block" data-bs-toggle="modal" data-bs-target="#howitworks">
+  <button class="btn btn-dark mt-5 mx-auto d-block" data-bs-toggle="modal" data-bs-target="#howitworks">
     How it works
   </button>
     <div class="container-fluid mt-5">
@@ -12,8 +12,8 @@
           <input v-model="username" class="form-control"  @keyup.enter="getUsers" placeholder="Search for a user">
         </div>
         <div class="col-4 col-md-2">
-          <button v-if="loading === false" @click="getUsers" class="btn btn-success "><i class="bi bi-search"></i></button>
-          <button v-else class="btn btn-secondary"  disabled>
+          <button v-if="loading === false" @click="getUsers" class="btn btn-warning "><i class="bi bi-search"></i></button>
+          <button v-else class="btn btn-dark"  disabled>
             <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
             <span role="status">Loading...</span>
           </button>
